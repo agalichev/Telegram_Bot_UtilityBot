@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UtilityBot</name>
+    </assembly>
+    <members>
+        <member name="T:UtilityBot.Bot">
+            <summary>
+            Основная логика бота, которая вызывает обработчики событий, которая постоянно активна
+            </summary>
+        </member>
+        <member name="M:UtilityBot.Bot.HandleUpdateAsync(Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
+            <summary>
+            Метод обработки штатных событий
+            </summary>
+            <param name="botClient">Клиент, благодаря которому бот подключится к Telegram Bot API</param>
+            <param name="update">Обновление любого типа</param>
+            <param name="cancellationToken">Специальная структура для отмены зависшей задачи</param>
+        </member>
+        <member name="M:UtilityBot.Bot.HandleErrorAsync(Telegram.Bot.ITelegramBotClient,System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Метод обработки проблемных событий
+            </summary>
+            <param name="exception">Любое исключение</param>
+        </member>
+        <member name="T:UtilityBot.Configuration.AppSettings">
+            <summary>
+            Данные конфигурации приложения
+            </summary>
+            <param name="BotToken">Специальный ключ для авторизации бота в Telegram</param>
+        </member>
+        <member name="T:UtilityBot.Controllers.DefaultMessageController">
+            <summary>
+            Контроллер для обработки прочих сообщений
+            </summary>
+        </member>
+        <member name="T:UtilityBot.Controllers.InlineKeyboardController">
+            <summary>
+            Контроллер для обработки нажатий на кнопки 
+            </summary>
+            <param name="_telegramBotClient">Для подключения к Telegram Bot API</param>
+            <param name="_memoryStorage">Для обновления данных пользовательской сессии</param>    
+        </member>
+        <member name="M:UtilityBot.Controllers.InlineKeyboardController.Handle(Telegram.Bot.Types.CallbackQuery,System.Threading.CancellationToken)">
+            <summary>
+             Асинхронная задача обработки нажатий на кнопки
+            </summary>
+            <param name="operationText">Содержит расшифровку значения параметра Callback</param>
+        </member>
+        <member name="T:UtilityBot.Controllers.TextMessageController">
+            <summary>
+            Контроллер для обработки текстовых сообщений
+            </summary>
+            <param name="_botOperationHandler">Вызов сервиса для обработки операций бота над текстовыми сообщениями</param>
+            <param name="_memoryStorage">Используем данные пользовательской сессии</param>
+        </member>
+        <member name="T:UtilityBot.Controllers.VoiceMessageController">
+            <summary>
+            Контроллер для обработки голосовых сообщений
+            </summary>
+        </member>
+        <member name="T:UtilityBot.Extensions.StringExtension">
+            <summary>
+            Данный класс содержит методы расширения string
+            </summary>
+        </member>
+        <member name="M:UtilityBot.Extensions.StringExtension.GetLongArrayFromString(System.String)">
+            <summary>
+            Данный метод проверяет строку на числа, 
+            при обнаружении разбивает ее на строки содержащие числа, 
+            которые вносятся далее в список
+            </summary>
+            <param name="inputString">Проверяема строка (текст)</param>
+            <param name="pattern">Шаблон для проверки строки</param>
+            <param name="substrings">Массив строк с числами</param>
+            <returns>Список long чисел</returns>
+        </member>
+        <member name="T:UtilityBot.Models.Session">
+            <summary>
+            Упрощенная версия хранилища данных пользовательских сессий
+            </summary>
+            <param name="OperationCode">Значение параметра CallBack экранной кнопки</param>>
+        </member>
+        <member name="M:UtilityBot.Services.IStorage.GetSession(System.Int64)">
+            <summary>
+            Получение сессии пользователя по идентификатору
+            </summary>
+        </member>
+        <member name="F:UtilityBot.Services.MemoryStorage._sessions">
+            <summary>
+            Хранилище сессий
+            </summary>
+            <param name="_sessions">Данные сессии пользователя</param>
+        </member>
+        <member name="M:UtilityBot.Services.MemoryStorage.GetSession(System.Int64)">
+            <summary>
+            Данный метод возвращает сессию по ключу, если она существует, или создает и возвращает новую
+            </summary>
+            <param name="chatId">Уникальный идентификатор чата (ключ)</param>
+            <returns>
+            Существующая или новая сессия
+            </returns>
+        </member>
+        <member name="T:UtilityBot.Utilities.Operation">
+            <summary>
+            Утилита с операциями над входящей строкой
+            </summary>
+        </member>
+        <member name="M:UtilityBot.Utilities.Operation.GetLongSumFromString(System.String)">
+            <summary>
+            Метод вычисления суммы чисел из строки
+            </summary>
+            <param name="numbersList">Список чисел long, изъятых из строки</param>
+            <returns>Сумма чисел</returns>
+        </member>
+        <member name="M:UtilityBot.Utilities.Operation.GetCharsAmount(System.String)">
+            <summary>
+            Метод подсчета количества символов в строке
+            </summary>
+            <param name="stringInfo">Объект класса StringInfo позволяет решить проблему суррогатной пары в случае символов Юникода</param>
+            <returns>Количество символов в строке</returns>
+        </member>
+    </members>
+</doc>

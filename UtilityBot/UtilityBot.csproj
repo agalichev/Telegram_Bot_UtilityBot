@@ -5,7 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\lexga\OneDrive\Documents\CDEV-14\Telegram_Bot_UtilityBot\UtilityBot\INFO.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
