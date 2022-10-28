@@ -8,6 +8,6 @@ namespace UtilityBot.Services
 {
     public interface IOperationHandler
     {
-        string Operate(string? messageText, string operationCode);
+        string Operate(string? text, string operationCode);
     }
 }

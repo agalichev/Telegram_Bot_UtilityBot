@@ -12,7 +12,11 @@ using Telegram.Bot.Types.ReplyMarkups;
 using UtilityBot.Services;
 
 namespace UtilityBot.Controllers
-{
+{   /// <summary>
+    /// Контроллер для обработки текстовых сообщений
+    /// </summary>
+    /// <param name="_botOperationHandler">Вызов сервиса для обработки операций бота над текстовыми сообщениями</param>
+    /// <param name="_memoryStorage">Используем данные пользовательской сессии</param>
     internal class TextMessageController
     {
         private readonly IStorage _memoryStorage;

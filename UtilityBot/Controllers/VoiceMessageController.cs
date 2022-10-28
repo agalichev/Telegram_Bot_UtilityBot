@@ -7,7 +7,9 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 
 namespace UtilityBot.Controllers
-{
+{   /// <summary>
+    /// Контроллер для обработки голосовых сообщений
+    /// </summary>
     internal class VoiceMessageController
     {
         private readonly ITelegramBotClient _telegramBotClient;

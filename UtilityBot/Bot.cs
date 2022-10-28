@@ -12,7 +12,10 @@ using Microsoft.Extensions.Hosting;
 using UtilityBot.Controllers;
 
 namespace UtilityBot
-{
+{   
+    /// <summary>
+    /// Основная логика бота, которая вызывает обработчики событий, которая постоянно активна
+    /// </summary>
     internal class Bot : BackgroundService
     {
         private ITelegramBotClient _telegramBotClient;
@@ -46,6 +49,12 @@ namespace UtilityBot
             Console.WriteLine("Бот запущен.");
         }
 
+        /// <summary>
+        /// Метод обработки штатных событий
+        /// </summary>
+        /// <param name="botClient">Клиент, благодаря которому бот подключится к Telegram Bot API</param>
+        /// <param name="update">Обновление любого типа</param>
+        /// <param name="cancellationToken">Специальная структура для отмены зависшей задачи</param>
         async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             if (update.Type == UpdateType.CallbackQuery)
@@ -73,6 +82,10 @@ namespace UtilityBot
             }
         }
 
+        /// <summary>
+        /// Метод обработки проблемных событий
+        /// </summary>
+        /// <param name="exception">Любое исключение</param>
         Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {   
             var errorMessage = exception switch

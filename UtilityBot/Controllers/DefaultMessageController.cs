@@ -7,7 +7,9 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 
 namespace UtilityBot.Controllers
-{
+{   /// <summary>
+    /// Контроллер для обработки прочих сообщений
+    /// </summary>
     public class DefaultMessageController
     {
         private readonly ITelegramBotClient _telegramBotClient;

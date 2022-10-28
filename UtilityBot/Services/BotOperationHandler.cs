@@ -11,7 +11,7 @@ namespace UtilityBot.Services
 {
     public class BotOperationHandler : IOperationHandler
     {
-        public string Operate(string? messageText, string operationCode)
+        public string Operate(string? text, string operationCode)
         {
             string result = String.Empty;
 
@@ -19,13 +19,13 @@ namespace UtilityBot.Services
             {
                 case "Sum":
                     Console.WriteLine("Вычисляется сумма чисел...");
-                    result = $"Сумма чисел: {Operation.LongSumFromString(messageText)}";
+                    result = $"Сумма чисел: {Operation.GetLongSumFromString(text)}";
                     Console.WriteLine($"Операция выполнена.");
                     break;
 
                 case "Length":
                     Console.WriteLine("Ведется подсчёт количества символов в сообщении...");
-                    result = $"Количество символов в вашем сообщении: {Operation.GetMessageLength(messageText)}";
+                    result = $"Количество символов в вашем сообщении: {Operation.GetCharsAmount(text)}";
                     Console.WriteLine($"Операция выполнена.");
                     break;
             }

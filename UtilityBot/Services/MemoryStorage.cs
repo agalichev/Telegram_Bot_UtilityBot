@@ -13,6 +13,7 @@ namespace UtilityBot.Services
         /// <summary>
         /// Хранилище сессий
         /// </summary>
+        /// <param name="_sessions">Данные сессии пользователя</param>
         private readonly ConcurrentDictionary<long, Session> _sessions;
 
         public MemoryStorage()
@@ -20,6 +21,13 @@ namespace UtilityBot.Services
             _sessions = new ConcurrentDictionary<long, Session>();
         }
 
+        /// <summary>
+        /// Данный метод возвращает сессию по ключу, если она существует, или создает и возвращает новую
+        /// </summary>
+        /// <param name="chatId">Уникальный идентификатор чата (ключ)</param>
+        /// <returns>
+        /// Существующая или новая сессия
+        /// </returns>
         public Session GetSession(long chatId)
         {
             if (_sessions.ContainsKey(chatId))
